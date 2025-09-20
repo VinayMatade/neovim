@@ -1,4 +1,3 @@
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -6,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -809,7 +808,25 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'retrobox'
+    end,
+  },
+
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'rose-pine' -- or 'rose-pine-moon' or 'rose-pine-dawn'
+    end,
+  },
+
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'catppuccin-mocha' -- or 'catppuccin-macchiato', 'catppuccin-frappe', 'catppuccin-latte'
     end,
   },
 
@@ -834,7 +851,7 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      -- Simple and easy statusline.
+      --  Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
@@ -906,8 +923,8 @@ require('lazy').setup({
       provider = 'gemini',
       providers = {
         gemini = {
-          endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
-          model = "gemini-2.0-flash",
+          endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
+          model = 'gemini-2.0-flash',
           timeout = 30000,
           extra_request_body = {
             temperature = 0.75,
