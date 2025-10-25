@@ -5,7 +5,16 @@ return {
   -- Install catppuccin (available but not loaded by default)
   { 'catppuccin/nvim', name = 'catppuccin', lazy = false, priority = 1000 },
 
-  -- Install + set rose-pine as the default
+  {
+    'ellisonleao/gruvbox.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('gruvbox').setup { contrast = 'hard' }
+      vim.cmd.colorscheme 'tokyonight-storm'
+    end,
+  },
+
   {
     'rose-pine/neovim',
     name = 'rose-pine',
@@ -18,7 +27,6 @@ return {
           italic = false,
         },
       }
-      vim.cmd.colorscheme 'rose-pine-dawn' -- 👈 this makes it your default
     end,
   },
 }
